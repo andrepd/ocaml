@@ -57,8 +57,6 @@ uintnat caml_dependent_size, caml_dependent_allocated;
 double caml_extra_heap_resources;
 uintnat caml_fl_wsz_at_phase_change = 0;
 
-extern value caml_fl_merge;  /* Defined in freelist.c. */
-
 static char *markhp, *chunk, *limit;
 static double p_backlog = 0.0; /* backlog for the gc speedup parameter */
 
