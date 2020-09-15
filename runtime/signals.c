@@ -229,11 +229,11 @@ value caml_execute_signal_exn(int signal_number, int in_signal_handler)
      as meaning the signal should be handled by a call to exit.  This is
      used to allow spacetime profiles to be completed on interrupt */
   if (caml_signal_handlers == 0) {
-    res = caml_sys_exit(Val_int(2));
+    res = caml_do_exit(2);
   } else {
     handler = Field(caml_signal_handlers, signal_number);
     if (!Is_block(handler)) {
-      res = caml_sys_exit(Val_int(2));
+      res = caml_do_exit(2);
     } else {
 #else
   handler = Field(caml_signal_handlers, signal_number);
