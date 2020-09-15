@@ -76,11 +76,6 @@ CAMLprim value caml_spacetime_compare_node(
   return Val_long(1);
 }
 
-CAMLprim value caml_spacetime_unmarshal_trie (value v_channel)
-{
-  return caml_input_value_to_outside_heap(v_channel);
-}
-
 CAMLprim value caml_spacetime_node_num_header_words(value unit)
 {
   return Val_long(Node_num_header_words);

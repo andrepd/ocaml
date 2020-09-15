@@ -146,7 +146,7 @@ module Trace = struct
   (* This function unmarshals into malloc blocks, which mean that we
      obtain a straightforward means of writing [compare] on [node]s. *)
   external unmarshal : in_channel -> 'a
-    = "caml_spacetime_unmarshal_trie"
+    = "caml_input_value_to_outside_heap"
 
   let unmarshal in_channel =
     let trace = unmarshal in_channel in
