@@ -47,8 +47,6 @@ void caml_init_gc (uintnat minor_size, uintnat major_size, uintnat major_incr,
                    uintnat custom_maj, uintnat custom_min, uintnat custom_bsz);
 
 
-CAMLextern value caml_gc_stat(value v);
-
 #ifdef DEBUG
 void caml_heap_check (void);
 #endif
