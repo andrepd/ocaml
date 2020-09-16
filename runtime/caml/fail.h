@@ -88,7 +88,7 @@ struct longjmp_buffer {
 
 int caml_is_special_exception(value exn);
 
-value caml_raise_if_exception(value res);
+CAMLextern value caml_raise_if_exception(value res);
 
 #ifdef NATIVE_CODE
 CAMLnoreturn_start

@@ -73,7 +73,7 @@ static int check_for_pending_signals(void)
 
 /* Execute all pending signals */
 
-value caml_process_pending_signals_exn(void)
+CAMLexport value caml_process_pending_signals_exn(void)
 {
   int i;
 #ifdef POSIX_SIGNALS
@@ -110,7 +110,7 @@ value caml_process_pending_signals_exn(void)
 
 CAMLno_tsan /* When called from [caml_record_signal], these memory
                accesses may not be synchronized. */
-void caml_set_action_pending(void)
+CAMLexport void caml_set_action_pending(void)
 {
   caml_something_to_do = 1;
 
@@ -129,7 +129,8 @@ void caml_set_action_pending(void)
      caml_garbage_collection and caml_alloc_small_dispatch.
 */
 
-CAMLno_tsan void caml_record_signal(int signal_number)
+CAMLno_tsan
+CAMLexport void caml_record_signal(int signal_number)
 {
   caml_pending_signals[signal_number] = 1;
   signals_are_pending = 1;
@@ -337,7 +338,7 @@ int caml_check_pending_actions()
   return caml_something_to_do;
 }
 
-value caml_process_pending_actions_with_root(value extra_root)
+CAMLexport value caml_process_pending_actions_with_root(value extra_root)
 {
   value res = process_pending_actions_with_root_exn(extra_root);
   return caml_raise_if_exception(res);
