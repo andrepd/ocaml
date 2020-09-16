@@ -51,6 +51,12 @@ CAMLprim value caml_record_backtrace(value vflag)
   return Val_unit;
 }
 
+CAMLexport void caml_record_backtraces(void)
+{
+  caml_record_backtrace(Val_true);
+  return;
+}
+
 /* Return the status of the backtrace machinery */
 CAMLprim value caml_backtrace_status(value vunit)
 {
